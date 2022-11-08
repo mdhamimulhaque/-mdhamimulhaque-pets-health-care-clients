@@ -1,19 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { HiChevronDoubleRight } from "react-icons/hi";
 
-const ServiceCard = () => {
+const ServiceCard = ({ service }) => {
+    const { _id, title, price, rating, image_url, details } = service;
     return (
         <div className="bg-white rounded-2xl shadow-xl px-8 py-12 sm:px-12 lg:px-8">
             <div className="mb-12 space-y-4">
-                <h3 className="text-2xl font-semibold text-rose-600">Graphic Design</h3>
+                <h3 className="text-2xl font-semibold text-rose-600">{title}</h3>
                 <div className="price_rating_area flex justify-between">
-                    <span>price: ${500}</span>
-                    <span>Rating: 4.5</span>
+                    <span>price: ${price}</span>
+                    <span>Rating: {rating}</span>
                 </div>
-                <p className="mb-6">Obcaecati, quam? Eligendi, nulla numquam natus laborum porro at cum, consectetur ullam tempora ipsa iste officia sed officiis! Incidunt ea animi officiis.</p>
-                <Link to="/services" className="block font-medium text-rose-600">View Details</Link>
+                <p className="mb-6">{details.slice(0, 100)}...</p>
+                <Link to="/services" className="block font-medium text-rose-600 flex gap-2 items-center">
+                    View Details <HiChevronDoubleRight /></Link>
             </div>
-            <img src="https://tailus.io/sources/blocks/end-image/preview/images/graphic.svg" className="w-2/3 ml-auto -mb-12" alt="illustration" loading="lazy" width="900" height="600" />
+            <img src={image_url} className="w-full ml-auto -mb-12 rounded-tl-lg rounded-tr-lg" alt="illustration" loading="lazy" width="900" height="600" />
         </div>
     );
 };

@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 import Faq from './Faq/Faq';
 import HeroSection from './HeroSection/HeroSection';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
+    const [services, setServices] = useState([]);
+    const [limit, setLimit] = useState(3)
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/services?limit=${limit}`)
+            .then(res => res.json())
+            .then(data => {
+                setServices(data.result3);
+            })
+    }, [])
+
     return (
         <div>
             <HeroSection />
@@ -18,9 +29,12 @@ const Home = () => {
                     </p>
 
                     <div className="grid grid-cols-1 gap-8 mt-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3">
-                        <ServiceCard />
-                        <ServiceCard />
-                        <ServiceCard />
+                        {
+                            services.map(service => <ServiceCard
+                                key={service._id}
+                                service={service}
+                            />)
+                        }
 
                     </div>
                     <div className="see_all_service_btn text-center mt-10">
