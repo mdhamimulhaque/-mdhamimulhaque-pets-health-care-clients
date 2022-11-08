@@ -16,7 +16,7 @@ const HeroSection = () => {
             >
                 <div className="max-w-xl text-center sm:text-left">
                     <h1 className="text-3xl font-extrabold sm:text-5xl">
-                        Welcome to United Pets
+                        Welcome to Pets health Care
 
                         <strong className="block font-extrabold text-rose-700">
                             Professional Care For Your Pet
@@ -32,14 +32,7 @@ const HeroSection = () => {
                             to="/services"
                             className="block w-full rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
                         >
-                            Get Our services
-                        </Link>
-
-                        <Link
-                            to="/services"
-                            className="block w-full rounded bg-white px-12 py-3 text-sm font-medium text-rose-600 shadow hover:text-rose-700 focus:outline-none focus:ring active:text-rose-500 sm:w-auto"
-                        >
-                            Learn More
+                            Learn more
                         </Link>
                     </div>
                 </div>

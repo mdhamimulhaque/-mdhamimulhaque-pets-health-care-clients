@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 import Faq from './Faq/Faq';
 import HeroSection from './HeroSection/HeroSection';
@@ -14,7 +15,7 @@ const Home = () => {
             .then(data => {
                 setServices(data.result3);
             })
-    }, [])
+    }, [limit])
 
     return (
         <div>
@@ -38,11 +39,13 @@ const Home = () => {
 
                     </div>
                     <div className="see_all_service_btn text-center mt-10">
-                        <button
-                            className=" rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
-                        >
-                            See All Services
-                        </button>
+                        <Link to='/services'>
+                            <button
+                                className=" rounded bg-rose-600 px-12 py-3 text-sm font-medium text-white shadow hover:bg-rose-700 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+                            >
+                                See All Services
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </section>

@@ -9,11 +9,11 @@ const ServiceCard = ({ service }) => {
             <div className="mb-12 space-y-4">
                 <h3 className="text-2xl font-semibold text-rose-600">{title}</h3>
                 <div className="price_rating_area flex justify-between">
-                    <span>price: ${price}</span>
+                    <span className='font-bold'>Price: ${price}</span>
                     <span>Rating: {rating}</span>
                 </div>
                 <p className="mb-6">{details.slice(0, 100)}...</p>
-                <Link to="/services" className="block font-medium text-rose-600 flex gap-2 items-center">
+                <Link to={`/services/${_id}`} className="block font-medium text-rose-600 flex gap-2 items-center">
                     View Details <HiChevronDoubleRight /></Link>
             </div>
             <img src={image_url} className="w-full ml-auto -mb-12 rounded-tl-lg rounded-tr-lg" alt="illustration" loading="lazy" width="900" height="600" />
