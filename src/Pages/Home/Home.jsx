@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
+import Faq from './Faq/Faq';
 import HeroSection from './HeroSection/HeroSection';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 
@@ -36,6 +36,10 @@ const Home = () => {
             <section className="why_choose_us">
                 <WhyChooseUs />
             </section>
+
+            <div className="faq_area">
+                <Faq />
+            </div>
         </div>
     );
 };
