@@ -56,24 +56,24 @@ const Header = () => {
                     </div>
                     <ul className="flex items-center hidden space-x-8 lg:flex">
                         <li>
-                            <a
-                                href="/login"
+                            <Link
+                                to="/login"
                                 className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
                                 aria-label="login"
                                 title="login"
                             >
                                 Log in
-                            </a>
+                            </Link>
                         </li>
                         <li>
-                            <a
-                                href="/registration"
+                            <Link
+                                to="/registration"
                                 className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
                                 aria-label="registration"
                                 title="registration"
                             >
                                 Registration
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                     <div className="lg:hidden z-50">
