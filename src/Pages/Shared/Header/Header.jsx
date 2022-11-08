@@ -1,9 +1,25 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { AuthContext } from '../../../context/AuthProvider';
 import LOGO from "../../../img/logo.png";
+import USER from "../../../img/user.png";
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const { user, logOut } = useContext(AuthContext);
+
+
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                toast.success("logout successfully");
+            }).catch((error) => {
+                console.error(error)
+                toast.error(error.message)
+            });
+    }
+
 
     return (
         <header className='shadow-lg'>
@@ -54,28 +70,53 @@ const Header = () => {
                             </li>
                         </ul>
                     </div>
+
                     <ul className="flex items-center hidden space-x-8 lg:flex">
-                        <li>
-                            <Link
-                                to="/login"
-                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
-                                aria-label="login"
-                                title="login"
-                            >
-                                Log in
-                            </Link>
-                        </li>
-                        <li>
-                            <Link
-                                to="/registration"
-                                className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
-                                aria-label="registration"
-                                title="registration"
-                            >
-                                Registration
-                            </Link>
-                        </li>
+                        {
+                            user?.uid ?
+                                <div className='flex items-center '>
+                                    <Link
+                                        onClick={handleLogOut}
+                                        to="/login"
+                                        className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-rose-600 hover:bg-rose-700 focus:shadow-outline focus:outline-none"
+                                        aria-label="login"
+                                        title="login"
+                                    >
+                                        Log Out
+                                    </Link>
+
+                                    <Link to="/" className="block relative">
+                                        <img alt="profil" src={user?.photoURL ? user?.photoURL : USER} className="mx-auto  border-2 border-rose-600 object-cover rounded-full h-12 w-12 ml-2 " />
+                                    </Link>
+                                </div>
+                                :
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/login"
+                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
+                                            aria-label="login"
+                                            title="login"
+                                        >
+                                            Log in
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/registration"
+                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
+                                            aria-label="registration"
+                                            title="registration"
+                                        >
+                                            Registration
+                                        </Link>
+                                    </li>
+                                </>
+                        }
+
                     </ul>
+
+
                     <div className="lg:hidden z-50">
                         <button
                             aria-label="Open Menu"
@@ -160,26 +201,49 @@ const Header = () => {
                                                     Blogs
                                                 </Link>
                                             </li>
-                                            <li>
-                                                <Link
-                                                    to="/login"
-                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
-                                                    aria-label="login"
-                                                    title="login"
-                                                >
-                                                    Log in
-                                                </Link>
-                                            </li>
-                                            <li>
-                                                <Link
-                                                    to="/registration"
-                                                    className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
-                                                    aria-label="registration"
-                                                    title="Registration"
-                                                >
-                                                    Registration
-                                                </Link>
-                                            </li>
+
+                                            {
+                                                user?.uid ?
+                                                    <div className='flex items-center '>
+                                                        <Link
+                                                            onClick={handleLogOut}
+                                                            to="/login"
+                                                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-rose-600 hover:bg-rose-700 focus:shadow-outline focus:outline-none"
+                                                            aria-label="login"
+                                                            title="login"
+                                                        >
+                                                            Log Out
+                                                        </Link>
+
+                                                        <Link to="/" className="block relative">
+                                                            <img alt="profil" src={user?.photoURL ? user?.photoURL : USER} className="mx-auto  border-2 border-rose-600 object-cover rounded-full h-12 w-12 ml-2" />
+                                                        </Link>
+                                                    </div>
+                                                    :
+                                                    <>
+                                                        <li>
+                                                            <Link
+                                                                to="/login"
+                                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
+                                                                aria-label="login"
+                                                                title="login"
+                                                            >
+                                                                Log in
+                                                            </Link>
+                                                        </li>
+                                                        <li>
+                                                            <Link
+                                                                to="/registration"
+                                                                className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-orange-300 hover:bg-amber-500 focus:shadow-outline focus:outline-none"
+                                                                aria-label="registration"
+                                                                title="Registration"
+                                                            >
+                                                                Registration
+                                                            </Link>
+                                                        </li>
+                                                    </>
+                                            }
+
                                         </ul>
                                     </nav>
                                 </div>

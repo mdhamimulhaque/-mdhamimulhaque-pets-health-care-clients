@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider';
 
 const Registration = () => {
+    const { createUser } = useContext(AuthContext);
+
+
+
     return (
         <div>
             <div className="py-6">
                 <div className="flex bg-white rounded-lg shadow-lg overflow-hidden mx-auto max-w-sm lg:max-w-4xl">
-                    <div className="hidden lg:block lg:w-1/2 bg-cover bg-[url('https://images.unsplash.com/photo-1546514714-df0ccc50d7bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80')]"></div>
+                    <div className="hidden lg:block lg:w-1/2 bg-cover bg-[url('https://img.freepik.com/free-photo/pretty-asian-housewife-carries-pedigree-dog-hands-expresses-love-pet-hugs-puppy-wears-casual-jumper-stands-with-furry-shiba-inu-isolated-pink-background_273609-34191.jpg?w=1380&t=st=1667937545~exp=1667938145~hmac=e959dc75f606ba034a0d0381be1b36e0d666b3089ccceb79a8f341526928aa17')]"></div>
                     <div className="w-full p-8 lg:w-1/2">
                         <h2 className="text-2xl font-semibold text-gray-700 text-center">Registration</h2>
                         <div className="mt-4">
