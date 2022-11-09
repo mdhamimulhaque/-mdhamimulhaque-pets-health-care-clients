@@ -41,9 +41,7 @@ const Header = () => {
                             <li>
                                 <Link
                                     to="/"
-                                    aria-label="Home"
-                                    title="Home"
-                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-rose-600"
                                 >
                                     Home
                                 </Link>
@@ -51,9 +49,7 @@ const Header = () => {
                             <li>
                                 <Link
                                     to="/services"
-                                    aria-label="Home"
-                                    title="Home"
-                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-rose-600"
                                 >
                                     Services
                                 </Link>
@@ -61,13 +57,32 @@ const Header = () => {
                             <li>
                                 <Link
                                     to="/blogs"
-                                    aria-label="Home"
-                                    title="Home"
-                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                    className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-rose-600"
                                 >
                                     Blogs
                                 </Link>
                             </li>
+                            {
+                                user?.uid &&
+                                <>
+                                    <li>
+                                        <Link
+                                            to="/my-reviews"
+                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-rose-600"
+                                        >
+                                            My Reviews
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link
+                                            to="/add-service"
+                                            className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400 hover:text-rose-600"
+                                        >
+                                            Add Service
+                                        </Link>
+                                    </li>
+                                </>
+                            }
                         </ul>
                     </div>
 
