@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
+import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthProvider';
 import PageHeader from '../Shared/PageHeader/PageHeader';
 import MyReviewCard from './MyReviewCard/MyReviewCard';
@@ -17,16 +18,42 @@ const MyReviews = () => {
 
     // ---> delete review
     const handleReviewDelete = (id) => {
-        fetch(`http://localhost:5000/my-reviews/${id}`, {
-            method: 'DELETE'
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // ---> delete user data
+                fetch(`http://localhost:5000/my-reviews/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            const remainingUser = myReviews.filter(rv => rv._id !== id);
+                            setMyReviews(remainingUser)
+                        }
+                    })
+
+                // --->sweet alert (delete success msg)
+                Swal.fire(
+                    'Deleted!',
+                    'Your file has been deleted.',
+                    'success'
+                )
+            }
         })
-            .then(res => res.json())
-            .then(data => {
-                if (data.deletedCount > 0) {
-                    const remainingUser = myReviews.filter(rv => rv._id !== id);
-                    setMyReviews(remainingUser)
-                }
-            })
+
+
+
+
+
+
     }
 
     return (
@@ -46,7 +73,7 @@ const MyReviews = () => {
                                     />)
                                 }
                             </div>
-                            : <h2 className='text-3xl my-2'>You Have No Comments</h2>
+                            : <h2 className='text-3xl my-2'>No review added yet</h2>
 
                     }
 
