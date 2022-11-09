@@ -4,11 +4,13 @@ import "./ServicesDetails.css";
 import { HiStar } from "react-icons/hi";
 import PageHeader from '../Shared/PageHeader/PageHeader';
 import ReviewSection from './ReviewSection/ReviewSection';
+import useTitle from '../../hooks/useTitle';
 
 
 
 const ServiceDetails = () => {
-    const service = useLoaderData()
+    const service = useLoaderData();
+    useTitle('Service Details')
     const { _id, title, price, rating, image_url, details } = service;
 
     return (

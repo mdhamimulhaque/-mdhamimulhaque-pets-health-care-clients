@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import PageHeader from '../Shared/PageHeader/PageHeader';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 
 const Services = () => {
     const { services } = useLoaderData();
-
+    useTitle('Services')
     return (
         <>
             <PageHeader />

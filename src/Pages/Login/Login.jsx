@@ -5,10 +5,12 @@ import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
 import { setAuthToken } from '../../api/auth';
+import useTitle from '../../hooks/useTitle';
 
 const Login = () => {
     const { googleLogIn, setLoading, logIn } = useContext(AuthContext);
     const [error, setError] = useState('');
+    useTitle('Login')
 
     const navigate = useNavigate();
     const location = useLocation();

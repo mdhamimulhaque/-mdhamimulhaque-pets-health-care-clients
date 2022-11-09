@@ -1,9 +1,10 @@
 import React from 'react';
 import Swal from 'sweetalert2';
+import useTitle from '../../hooks/useTitle';
 import PageHeader from '../Shared/PageHeader/PageHeader';
 
 const AddService = () => {
-
+    useTitle('Add Service')
     const handleCreateService = (e) => {
         e.preventDefault();
         const form = e.target;

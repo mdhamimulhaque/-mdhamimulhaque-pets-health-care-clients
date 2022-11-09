@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../context/AuthProvider';
+import useTitle from '../../hooks/useTitle';
 import PageHeader from '../Shared/PageHeader/PageHeader';
 import MyReviewCard from './MyReviewCard/MyReviewCard';
 
 const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([]);
+    useTitle('My Reviews')
 
     const { user, logOut } = useContext(AuthContext)
 

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import useTitle from '../../hooks/useTitle';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 import Faq from './Faq/Faq';
 import HeroSection from './HeroSection/HeroSection';
@@ -7,7 +8,8 @@ import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
     const [services, setServices] = useState([]);
-    const [limit, setLimit] = useState(3)
+    const [limit, setLimit] = useState(3);
+    useTitle('Home')
 
     useEffect(() => {
         fetch(`http://localhost:5000/services?limit=${limit}`)
