@@ -1,6 +1,6 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
@@ -8,6 +8,10 @@ import { FcGoogle } from "react-icons/fc";
 const Login = () => {
     const { googleLogIn, setLoading, logIn } = useContext(AuthContext);
     const [error, setError] = useState('');
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     // ---> provider
     const googleProvider = new GoogleAuthProvider();
@@ -19,6 +23,7 @@ const Login = () => {
             .then(res => {
                 toast.success('login successfully');
                 setError('');
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.error(err)
@@ -43,6 +48,7 @@ const Login = () => {
                 const user = res.user;
                 setError('');
                 form.reset();
+                navigate(from, { replace: true });
 
             })
             .catch(err => {

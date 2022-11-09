@@ -20,11 +20,11 @@ const ReviewCard = ({ review }) => {
                         <span className="title-font font-medium text-gray-900">{review?.userName ? review?.userName : "No Name"}</span>
                         <span className="text-sm text-rose-600">{review?.serviceTitle}</span>
                     </span>
-                    <div className="icons_like flex gap-2 text-xl items-center">
-                        <HiThumbUp onClick={() => like()} className={isClicked ? "text-rose-600" : "hover:text-rose-600"} />
-                    </div>
                 </span>
                 <p className="leading-relaxed mb-6">{review.review}</p>
+                <div className="icons_like flex gap-2 text-xl items-center">
+                    <HiThumbUp onClick={() => like()} className={isClicked ? "text-rose-600" : "hover:text-rose-600"} />
+                </div>
             </div>
         </div>
 

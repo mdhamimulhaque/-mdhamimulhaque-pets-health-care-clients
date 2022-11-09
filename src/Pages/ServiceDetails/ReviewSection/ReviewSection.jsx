@@ -9,6 +9,7 @@ import ReviewCard from '../../Shared/ReviewCard/ReviewCard';
 const ReviewSection = ({ service }) => {
     const { user } = useContext(AuthContext);
     const [reviews, setReviews] = useState([])
+    // console.log(user)
 
     // --->handle comment form
     const handleReviewForm = (e) => {
@@ -17,9 +18,11 @@ const ReviewSection = ({ service }) => {
         const reviewInfo = {
             review: review,
             userName: user.displayName,
+            userEmail: user.email,
             photoURL: user.photoURL,
             serviceId: service._id,
-            serviceTitle: service.title
+            serviceTitle: service.title,
+            serviceImg: service.image_url
 
         }
 
