@@ -1,7 +1,11 @@
-import React from 'react';
-import { HiThumbUp, HiOutlineStar } from "react-icons/hi";
+import React, { useState } from 'react';
+import { HiThumbUp } from "react-icons/hi";
 
 const ReviewSection = ({ service }) => {
+    const [isClicked, setIsClicked] = useState(false);
+    const like = () => {
+        setIsClicked(!isClicked)
+    }
     return (
         <div>
             <form>
@@ -24,9 +28,8 @@ const ReviewSection = ({ service }) => {
                         </span>
                     </a>
                     <p className="leading-relaxed mb-6">Synth chartreuse iPhone lomo cray raw denim brunch everyday carry neutra before they sold out fixie 90's microdosing. Tacos pinterest fanny pack venmo, post-ironic heirloom try-hard pabst authentic iceland.</p>
-                    <div className="icons_like flex gap-2 text-xl items-center justify-between ">
-                        <HiThumbUp className='hover:text-rose-600' />
-                        <span className='flex items-center'>Rating: 4.5 <HiOutlineStar className='text-yellow-400' /></span>
+                    <div className="icons_like flex gap-2 text-xl items-center">
+                        <HiThumbUp onClick={() => like()} className={isClicked ? "text-rose-600" : "hover:text-rose-600"} />
                     </div>
                 </div>
             </div>
