@@ -4,7 +4,7 @@ import PageHeader from '../Shared/PageHeader/PageHeader';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 
 const Services = () => {
-    const { result } = useLoaderData();
+    const { services } = useLoaderData();
 
     return (
         <>
@@ -15,7 +15,7 @@ const Services = () => {
                     <div className=" col-span-4 rounded-md ">
                         <div className="grid grid-cols-1 gap-8 xl:mt-12 xl:gap-12 md:grid-cols-2 xl:grid-cols-3 w-full">
                             {
-                                result.map(service => <ServiceCard
+                                services.map(service => <ServiceCard
                                     key={service._id}
                                     service={service}
                                 />)
@@ -35,7 +35,7 @@ const Services = () => {
                             <h1 className="text-center text-xl my-4 font-semibold bg-white py-2 rounded-md border-b-2 cursor-pointer  text-gray-600">Services</h1>
                             <div className="bg-white rounded-md list-none  text-center ">
                                 {
-                                    result.map(service =>
+                                    services.map(service =>
                                         <li key={service._id} className="py-3 border-b-2"><Link to={`/services/${service._id}`} className="list-none  hover:text-rose-600">{service.title}</Link></li>
                                     )
                                 }

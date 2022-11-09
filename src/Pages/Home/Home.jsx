@@ -13,7 +13,7 @@ const Home = () => {
         fetch(`http://localhost:5000/services?limit=${limit}`)
             .then(res => res.json())
             .then(data => {
-                setServices(data.result3);
+                setServices(data.service3);
             })
     }, [limit])
 

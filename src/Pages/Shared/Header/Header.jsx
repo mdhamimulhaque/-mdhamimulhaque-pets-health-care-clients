@@ -77,7 +77,6 @@ const Header = () => {
                                 <div className='flex items-center '>
                                     <Link
                                         onClick={handleLogOut}
-                                        to="/login"
                                         className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-rose-600 hover:bg-rose-700 focus:shadow-outline focus:outline-none"
                                         aria-label="login"
                                         title="login"

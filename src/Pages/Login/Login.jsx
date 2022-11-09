@@ -6,7 +6,7 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
     const { googleLogIn } = useContext(AuthContext);
-    const [error, setError, setLoading] = useState('');
+    const [error, setError, setLoading, logIn] = useState('');
 
     // ---> provider
     const googleProvider = new GoogleAuthProvider();
@@ -29,6 +29,32 @@ const Login = () => {
             })
     }
 
+
+    // ---> handle email-pass login
+    const handleEmailPassLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(email, password)
+
+        // logIn(email, password)
+        //     .then(res => {
+        //         const user = res.user;
+        //         setError('');
+        //         form.reset();
+
+        //     })
+        //     .catch(err => {
+        //         console.error(err)
+        //         toast.error(err.message);
+        //         setError(err.message);
+        //     })
+        //     .finally(() => {
+        //         setLoading(false)
+        //     })
+    }
+
     return (
         <div>
             <div className="bg-no-repeat bg-cover bg-center relative bg-[url('https://img.freepik.com/free-photo/love-tender-warm-feeling-understanding-without-words-cheerful-korean-woman-receives-kiss-from-two-pedigree-puppies-cannot-imagine-life-without-pets-has-fun-with-animal-best-friends_273609-34197.jpg?w=1380&t=st=1667931232~exp=1667931832~hmac=e79812bfa95244418b097f9a6fb26c2da84f1b6ecfd728b7aaa3dab4164f826a')]"><div className="absolute bg-gradient-to-b from-rose-500 to-rose-400 opacity-75 inset-0 z-0"></div>
@@ -46,16 +72,16 @@ const Login = () => {
                                 <p className="text-gray-500">Please Log in to your account.</p>
                             </div>
 
-                            <form className="space-y-5">
+                            <form onSubmit={handleEmailPassLogin} className="space-y-5">
                                 <div className="space-y-2">
                                     <label className="text-sm font-medium text-gray-700 tracking-wide">Email</label>
-                                    <input className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-rose-400" type="" placeholder="mail@gmail.com" />
+                                    <input name='email' className=" w-full text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-rose-400" type="email" placeholder="Your Email" />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="mb-5 text-sm font-medium text-gray-700 tracking-wide">
                                         Password
                                     </label>
-                                    <input className="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-rose-400" type="" placeholder="Enter your password" />
+                                    <input name="password" className="w-full content-center text-base px-4 py-2 border  border-gray-300 rounded-lg focus:outline-none focus:border-rose-400" type="password" placeholder="Enter your password" />
                                 </div>
                                 <p className='text-rose-600 text-sm'>{error}</p>
                                 <div className="text-sm">
@@ -63,7 +89,7 @@ const Login = () => {
                                 </div>
                                 <div>
                                     <button type="submit" className=" bg-rose-400  hover:bg-rose-500 text-gray-100 w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md mb-4">
-                                        Sign in
+                                        Log in
                                     </button>
 
                                 </div>
