@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { HiChevronDoubleRight } from "react-icons/hi";
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthProvider';
@@ -8,6 +8,7 @@ import ReviewCard from '../../Shared/ReviewCard/ReviewCard';
 
 const ReviewSection = ({ service }) => {
     const { user } = useContext(AuthContext);
+    const [reviews, setReviews] = useState([])
 
     // --->handle comment form
     const handleReviewForm = (e) => {
@@ -37,9 +38,15 @@ const ReviewSection = ({ service }) => {
                     e.target.reset()
                 }
             })
-
-
     }
+
+    // ---> get service based review
+    useEffect(() => {
+        fetch(`http://localhost:5000/reviews/${service.title}`)
+            .then(res => res.json())
+            .then(data => setReviews(data))
+    }, [reviews])
+
 
     return (
         <div>
@@ -62,7 +69,16 @@ const ReviewSection = ({ service }) => {
                     </Link>
             }
 
-            <ReviewCard service={service} />
+            <div className="review_area">
+                {
+                    reviews.map(review => <ReviewCard
+                        key={review._id}
+                        service={service}
+                        review={review}
+                    />)
+                }
+            </div>
+
 
         </div>
     );
