@@ -7,13 +7,26 @@ import MyReviewCard from './MyReviewCard/MyReviewCard';
 const MyReviews = () => {
     const [myReviews, setMyReviews] = useState([]);
 
-    const { user } = useContext(AuthContext)
+    const { user, logOut } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-reviews?email=${user.email}`)
-            .then(res => res.json())
-            .then(data => setMyReviews(data))
-    }, [myReviews])
+        fetch(`http://localhost:5000/my-reviews?email=${user.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('petHealthCare')}`
+            }
+        })
+            .then(res => {
+                if (res.status === 401 || res.status === 403) {
+                    logOut()
+                }
+                return res.json()
+            })
+            .then(data => {
+                console.log(data)
+                setMyReviews(data)
+            })
+
+    }, [])
 
 
     // ---> delete review

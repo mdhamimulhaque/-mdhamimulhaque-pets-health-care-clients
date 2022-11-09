@@ -41,7 +41,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/add-service',
-                element: <AddService />
+                element: <PrivateRoute><AddService /></PrivateRoute>
             },
             {
                 path: '/login',

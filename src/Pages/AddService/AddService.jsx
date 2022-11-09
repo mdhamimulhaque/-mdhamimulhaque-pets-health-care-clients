@@ -1,5 +1,4 @@
 import React from 'react';
-import { toast } from 'react-toastify';
 import Swal from 'sweetalert2';
 import PageHeader from '../Shared/PageHeader/PageHeader';
 

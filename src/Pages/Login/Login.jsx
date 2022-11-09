@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
 import { FcGoogle } from "react-icons/fc";
+import { setAuthToken } from '../../api/auth';
 
 const Login = () => {
     const { googleLogIn, setLoading, logIn } = useContext(AuthContext);
@@ -21,8 +22,11 @@ const Login = () => {
     const handleGoogleLogIn = () => {
         googleLogIn(googleProvider)
             .then(res => {
-                toast.success('login successfully');
+
+                const user = res.user;
                 setError('');
+                setAuthToken(user);
+                toast.success('login successfully');
                 navigate(from, { replace: true });
             })
             .catch(err => {
@@ -48,6 +52,7 @@ const Login = () => {
                 const user = res.user;
                 setError('');
                 form.reset();
+                setAuthToken(user)
                 navigate(from, { replace: true });
 
             })
