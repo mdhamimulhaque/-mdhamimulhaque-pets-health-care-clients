@@ -3,10 +3,11 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../context/AuthProvider';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
-    const { googleLogIn } = useContext(AuthContext);
-    const [error, setError, setLoading, logIn] = useState('');
+    const { googleLogIn, setLoading, logIn } = useContext(AuthContext);
+    const [error, setError] = useState('');
 
     // ---> provider
     const googleProvider = new GoogleAuthProvider();
@@ -36,23 +37,22 @@ const Login = () => {
         const form = e.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
 
-        // logIn(email, password)
-        //     .then(res => {
-        //         const user = res.user;
-        //         setError('');
-        //         form.reset();
+        logIn(email, password)
+            .then(res => {
+                const user = res.user;
+                setError('');
+                form.reset();
 
-        //     })
-        //     .catch(err => {
-        //         console.error(err)
-        //         toast.error(err.message);
-        //         setError(err.message);
-        //     })
-        //     .finally(() => {
-        //         setLoading(false)
-        //     })
+            })
+            .catch(err => {
+                console.error(err)
+                toast.error(err.message);
+                setError(err.message);
+            })
+            .finally(() => {
+                setLoading(false)
+            })
     }
 
     return (
@@ -94,8 +94,8 @@ const Login = () => {
 
                                 </div>
                             </form>
-                            <button onClick={handleGoogleLogIn} className="flex flex-wrap justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
-                                <img className="w-5 mr-2" src="https://lh3.googleusercontent.com/COxitqgJr1sJnIDe8-jiKhxDx1FrYbtRHKJ9z_hELisAlapwE9LUPh6fcXIfb5vwpbMl4xl9H9TRFPc5NOO8Sb3VSgIBrfRYvW6cUA" />
+                            <button onClick={handleGoogleLogIn} className="flex flex-wrap items-center justify-center w-full border border-gray-300 hover:border-gray-500 px-2 py-1.5 rounded-md">
+                                <FcGoogle className='text-lg mr-2 text-center my-1' />
                                 Sign in with Google
                             </button>
                         </div>
