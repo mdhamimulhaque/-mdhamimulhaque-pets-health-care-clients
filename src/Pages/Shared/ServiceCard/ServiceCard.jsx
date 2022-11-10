@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HiChevronDoubleRight } from "react-icons/hi";
+import { PhotoView } from 'react-photo-view';
 
 const ServiceCard = ({ service }) => {
     const { _id, title, price, rating, image_url, details } = service;
@@ -16,7 +17,9 @@ const ServiceCard = ({ service }) => {
                 <Link to={`/services/${_id}`} className="block font-medium text-rose-600 flex gap-2 items-center">
                     View Details <HiChevronDoubleRight /></Link>
             </div>
-            <img src={image_url} className="w-full ml-auto -mb-12 rounded-tl-lg rounded-tr-lg" alt="illustration" loading="lazy" width="900" height="600" />
+            <PhotoView src={image_url}>
+                <img src={image_url} className="w-full ml-auto -mb-12 rounded-tl-lg rounded-tr-lg" alt="illustration" loading="lazy" width="900" height="600" />
+            </PhotoView>
         </div>
     );
 };
