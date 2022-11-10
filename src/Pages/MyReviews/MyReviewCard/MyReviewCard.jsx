@@ -1,7 +1,8 @@
 import React from 'react';
 import { HiTrash, HiPencilAlt } from "react-icons/hi";
+import { Link } from 'react-router-dom';
 
-const MyReviewCard = ({ myReVw, handleReviewDelete }) => {
+const MyReviewCard = ({ myReVw, handleReviewDelete, handleReviewUpdate }) => {
     const { _id, userName, review, photoURL, serviceImg, serviceTitle } = myReVw;
 
 
@@ -20,7 +21,9 @@ const MyReviewCard = ({ myReVw, handleReviewDelete }) => {
                             </div>
                         </div>
                         <span className="inline-flex text-2xl gap-2">
-                            <HiPencilAlt className='hover:text-blue-600' />
+                            <Link to={`/update-review/${_id}`}>
+                                <HiPencilAlt className='hover:text-blue-600' />
+                            </Link>
                             <HiTrash onClick={() => handleReviewDelete(_id)} className='hover:text-rose-600' />
                         </span>
                     </div>
