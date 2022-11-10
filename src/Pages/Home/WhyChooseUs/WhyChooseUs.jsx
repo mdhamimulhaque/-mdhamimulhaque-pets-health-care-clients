@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const WhyChooseUs = () => {
+    const [whyChoose, setWhyChoose] = useState([])
+    useEffect(() => {
+        fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/whyChooseUs`)
+            .then(res => res.json())
+            .then(data => setWhyChoose(data))
+    }, [])
     return (
         <section className=" py-10 bg-base-200 ">
             <div className="why_choose_us_wrapper px-6 container mx-auto">
@@ -24,18 +30,15 @@ const WhyChooseUs = () => {
                                             </div>
                                             <div className="relative col-span-12 px-4 space-y-6 sm:col-span-9">
                                                 <div className="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:dark:bg-gray-700">
-                                                    <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400">
-                                                        <h3 className="text-xl font-semibold tracking-wide text-orange-300 hover:text-orange-400">Care for Puppy</h3>
-                                                        <p className="mt-3">We strongly advise you to take advantage of our extremely affordable annual</p>
-                                                    </div>
-                                                    <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400">
-                                                        <h3 className="text-xl font-semibold tracking-wide text-orange-300 hover:text-orange-400">Dental Care</h3>
-                                                        <p className="mt-3">Dental disease is the most commonly neglected chronic infection in our pets.</p>
-                                                    </div>
-                                                    <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400">
-                                                        <h3 className="text-xl font-semibold tracking-wide text-orange-300 hover:text-orange-400">14yr Experience</h3>
-                                                        <p className="mt-3">With us pet care professionals are passionate, well-trained, and pleasant animal.</p>
-                                                    </div>
+                                                    {
+                                                        whyChoose.map((choose => {
+                                                            return <div key={choose._id} className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400">
+                                                                <h3 className="text-xl font-semibold tracking-wide text-orange-300 hover:text-orange-400">{choose.title}</h3>
+                                                                <p className="mt-3">{choose.des}</p>
+                                                            </div>
+                                                        }))
+                                                    }
+
                                                 </div>
                                             </div>
                                         </div>

@@ -7,7 +7,6 @@ import BlogCard from '../Shared/BlogCard/BlogCard';
 const Blogs = () => {
     useTitle('Blogs');
     const blogs = useLoaderData();
-    console.log(blogs)
     return (
         <>
             <PageHeader title={'Blogs'} />
