@@ -28,7 +28,7 @@ const ReviewSection = ({ service }) => {
         }
 
         // ---> post || create review
-        fetch('http://localhost:5000/review', {
+        fetch('https://pets-health-care-server-mdhamimulhaque.vercel.app/review', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -46,7 +46,7 @@ const ReviewSection = ({ service }) => {
 
     // ---> get service based review
     useEffect(() => {
-        fetch(`http://localhost:5000/reviews/${service.title}`)
+        fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/reviews/${service.title}`)
             .then(res => res.json())
             .then(data => setReviews(data))
     }, [reviews])

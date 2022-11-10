@@ -24,17 +24,17 @@ const router = createBrowserRouter([
             },
             {
                 path: '/services',
-                loader: () => fetch(`http://localhost:5000/services`),
+                loader: () => fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/services`),
                 element: <Services />
             },
             {
                 path: '/services/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/services/${params.id}`),
+                loader: ({ params }) => fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/services/${params.id}`),
                 element: <ServiceDetails />
             },
             {
                 path: '/blogs',
-                loader: () => fetch(`http://localhost:5000/blogs`),
+                loader: () => fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/blogs`),
                 element: <Blogs />
             },
             {
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
             },
             {
                 path: '/update-review/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/my-reviews/${params.id}`),
+                loader: ({ params }) => fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/my-reviews/${params.id}`),
                 element: <PrivateRoute><UpdateReview /></PrivateRoute>
             },
             {

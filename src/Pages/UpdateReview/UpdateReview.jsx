@@ -26,7 +26,7 @@ const UpdateReview = () => {
         }
 
 
-        fetch(`http://localhost:5000/my-reviews/${_id}`, {
+        fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/my-reviews/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'

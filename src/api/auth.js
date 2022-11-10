@@ -6,7 +6,7 @@ export const setAuthToken = (user) => {
 
 
     // ---> get jwt token
-    fetch(`http://localhost:5000/jwt`, {
+    fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/jwt`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json'

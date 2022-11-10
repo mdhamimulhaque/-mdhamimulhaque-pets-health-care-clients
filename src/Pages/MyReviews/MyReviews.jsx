@@ -12,7 +12,7 @@ const MyReviews = () => {
     const { user, logOut } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/my-reviews?email=${user.email}`, {
+        fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/my-reviews?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${localStorage.getItem('petHealthCare')}`
             }
@@ -43,7 +43,7 @@ const MyReviews = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 // ---> delete user data
-                fetch(`http://localhost:5000/my-reviews/${id}`, {
+                fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/my-reviews/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

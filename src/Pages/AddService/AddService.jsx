@@ -17,7 +17,7 @@ const AddService = () => {
 
         const service = { title, price, rating, image_url, details }
 
-        fetch(`http://localhost:5000/services`, {
+        fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/services`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

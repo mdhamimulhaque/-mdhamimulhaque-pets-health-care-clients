@@ -12,7 +12,7 @@ const Home = () => {
     useTitle('Home')
 
     useEffect(() => {
-        fetch(`http://localhost:5000/services?limit=${limit}`)
+        fetch(`https://pets-health-care-server-mdhamimulhaque.vercel.app/services?limit=${limit}`)
             .then(res => res.json())
             .then(data => {
                 setServices(data.service3);
