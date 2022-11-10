@@ -1,6 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Faq = () => {
+    const [faqs, setFaqs] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:5000/faq`)
+            .then(res => res.json())
+            .then(data => setFaqs(data))
+    }, [])
     return (
         <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl lg:py-20">
             <div className="grid gap-10 lg:grid-cols-2">
@@ -9,30 +15,17 @@ const Faq = () => {
                     <h2 className="mb-12 text-4xl font-bold leading-none sm:text-5xl">Get Every Answer
                         From Here</h2>
                     <div className="flex flex-col divide-y ">
-                        <details className='shadow-lg px-2 py-4'>
-                            <summary className="py-2 outline-none cursor-pointer font-semibold ">What types of foods do you have on hand??</summary>
-                            <div className="px-4 pb-4">
-                                <p>Regular formula is fed to the dogs and cats in our care. CarePress is a high-quality food that comes in dry and canned forms, with the option of.</p>
-                            </div>
-                        </details>
-                        <details className='shadow-lg px-2 py-4'>
-                            <summary className="py-2 outline-none cursor-pointer font-semibold ">What should I bring with me for my pet’s boarding stay?</summary>
-                            <div className="px-4 pb-4">
-                                <p>There is no need to bring anything with you. Food, stainless steel dishes, and beds are all provided. Please do not bring any dishes from home. After each meal.</p>
-                            </div>
-                        </details>
-                        <details className='shadow-lg px-2 py-4'>
-                            <summary className="py-2 outline-none cursor-pointer font-semibold">What Should I Expect Before My Pet Has Surgery?</summary>
-                            <div className="px-4 pb-4 space-y-2">
-                                <p>We withhold food from all dogs and cats after 8:00 p.m. the night before surgery. Food is withheld so that if the pet vomits while sedated, the food. </p>
-                            </div>
-                        </details>
-                        <details className='shadow-lg px-2 py-4'>
-                            <summary className="py-2 outline-none cursor-pointer font-semibold">Are there any benefits of Pet Day Care?</summary>
-                            <div className="px-4 pb-4 space-y-2">
-                                <p>It will not only provide you with a safe place in which to raise your dog, but it will also aid in their socialization and help them stay fit.</p>
-                            </div>
-                        </details>
+
+                        {
+                            faqs.map((fq) => {
+                                return <details key={fq._id} className='shadow-lg px-2 py-4'>
+                                    <summary className="py-2 outline-none cursor-pointer font-semibold ">{fq.qn}</summary>
+                                    <div className="px-4 pb-4">
+                                        <p>{fq.ans}</p>
+                                    </div>
+                                </details>
+                            })
+                        }
                     </div>
                 </div>
                 <div className="flex items-center justify-center -mx-4 lg:pl-8">

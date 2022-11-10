@@ -24,7 +24,7 @@ const UpdateReview = () => {
             serviceTitle,
             userEmail,
         }
-        // console.log(reviewInfo)
+
 
         fetch(`http://localhost:5000/my-reviews/${_id}`, {
             method: 'PUT',
