@@ -3,13 +3,14 @@ import { HiChevronDoubleRight } from "react-icons/hi";
 import { toast } from 'react-toastify';
 import { AuthContext } from '../../../context/AuthProvider';
 
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import ReviewCard from '../../Shared/ReviewCard/ReviewCard';
 
 const ReviewSection = ({ service }) => {
     const { user } = useContext(AuthContext);
-    const [reviews, setReviews] = useState([])
-    // console.log(user)
+    const [reviews, setReviews] = useState([]);
+    const location = useLocation()
+
 
     // --->handle comment form
     const handleReviewForm = (e) => {
@@ -64,7 +65,7 @@ const ReviewSection = ({ service }) => {
                             </button>
                         </div>
                     </form>
-                    : <Link to="/login">
+                    : <Link to="/login" state={{ from: location }} replace>
                         <div className='bg-rose-600 text-white hover:bg-rose-700 flex justify-between items-center py-3 px-2'>
                             <h2 className='font-bold '>Please login to add a review</h2>
                             <HiChevronDoubleRight className='text-xl' />
