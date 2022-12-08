@@ -18,7 +18,6 @@ const Login = () => {
 
     // ---> provider
     const googleProvider = new GoogleAuthProvider();
-
     // ---> handle google login
     const handleGoogleLogIn = () => {
         googleLogIn(googleProvider)
