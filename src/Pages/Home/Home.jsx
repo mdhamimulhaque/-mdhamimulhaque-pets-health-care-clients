@@ -4,6 +4,7 @@ import useTitle from '../../hooks/useTitle';
 import ServiceCard from '../Shared/ServiceCard/ServiceCard';
 import Faq from './Faq/Faq';
 import HeroSection from './HeroSection/HeroSection';
+import PriceTable from './Pricetable/PriceTable';
 import WhyChooseUs from './WhyChooseUs/WhyChooseUs';
 
 const Home = () => {
@@ -54,6 +55,10 @@ const Home = () => {
 
             <section className="why_choose_us">
                 <WhyChooseUs />
+            </section>
+
+            <section>
+                <PriceTable />
             </section>
 
             <div className="faq_area">
